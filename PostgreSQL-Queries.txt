@@ -1,0 +1,103 @@
+1. select * from customers;
+
+2. select distinct country from customers;
+
+3. select * from customers where customer_id like 'BL%';
+
+4. select * from orders limit '100';
+
+5. select * from customers 
+where postal_code = '1010'
+or postal_code = '3012'
+or postal_code = '12209'
+or postal_code = '05023'
+
+6. select * from orders
+where ship_region IS NOT NULL;
+
+7. select * from customers
+order by country, city;
+
+8. insert into customers (
+customer_id,
+company_name,
+contact_name,
+city
+)
+values(
+'MILK',
+'Milky Way',
+'DJ Toler',
+'NeverNever Land'
+)
+
+9. update orders
+set ship_region = 'EuroZone'
+where ship_country = 'France';
+
+10. delete from order_details 
+where quantity = 1;
+
+11. select 
+avg (quantity),
+min (quantity),
+max (quantity)
+from order_details;
+
+12. select 
+avg (quantity),
+min (quantity),
+max (quantity),
+order_id
+from order_details
+group by order_id;
+
+13. select customer_id
+from orders
+where order_id = '10290';
+
+14. /* inner join */
+select * 
+from customers 
+inner join orders
+on customers.customer_id = orders.customer_id;
+
+/* right join */
+select * 
+from customers 
+right join orders
+on customers.customer_id = orders.customer_id;
+
+/* left join */
+select * 
+from customers 
+left join orders
+on customers.customer_id = orders.customer_id;
+
+15. select ship_city, ship_country
+from orders
+join employees
+on orders.employee_id = employees.employee_id
+where employees.city = 'London';
+
+16. select orders.ship_name
+from orders
+join order_details
+on orders.order_id = order_details.order_id
+join products
+on order_details.product_id = products.product_id
+where products.discontinued = '1';
+
+17. -- select *
+-- from employees
+
+select first_name 
+from employees 
+where reports_to IS NULL;
+
+18. -- select first_name, employee_id, reports_to
+-- from employees
+
+select first_name
+from employees
+where reports_to = '2';
